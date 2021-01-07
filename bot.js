@@ -29,8 +29,6 @@ function createBot () {
   const defaultMove = new Movements(bot, mcData)
   bot.settings.colorsEnabled = false
 
-  
-
   bot.once("spawn", function(){
       console.log("\x1b[33m[BotLog] Bot joined to the server", '\x1b[0m')
 
@@ -60,7 +58,6 @@ function createBot () {
 
   bot.on("chat", function(username, message){
       if(config.utils['chat-log']){
-
           console.log(`[ChatLog] ${username} : ${message}`)
       }
   })
@@ -78,8 +75,6 @@ function createBot () {
         createBot()
       })
   }
-
-  
 
   bot.on('kicked', (reason) => console.log('\x1b[33m',`[BotLog] Bot was kicked from the server. Reason: \n${reason}`, '\x1b[0m'))
   bot.on('error', err => console.log(`\x1b[31m[ERROR] ${err.message}`, '\x1b[0m'))
