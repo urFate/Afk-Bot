@@ -1,0 +1,35 @@
+{
+    "bot-account":{ 
+        "username": "bot_one@example.com",
+        "password": "12345678",
+        "type": "mojang"
+    },
+
+    "server":{
+        "ip": "localhost",
+        "port": 25565,
+        "version": "1.16.4"
+    },
+
+    "position":{
+        "enabled": false,
+        "x": 0,
+        "y": 0,
+        "z": 0
+    },
+
+    "utils":{
+        "auto-auth":{
+            "enabled": false,
+            "password": "12345678"
+        },
+
+        "anti-afk":{
+            "enabled": false,
+            "sneak": false
+        },
+
+        "chat-log": true,
+        "auto-reconnect": false
+    }
+}
