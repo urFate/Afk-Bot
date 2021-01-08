@@ -1,5 +1,6 @@
 # Afk Bot
 ![Issues](https://img.shields.io/github/issues/Arny4/Afk-Bot) ![Stars](https://img.shields.io/github/stars/Arny4/Afk-Bot) ![License](https://img.shields.io/github/license/Arny4/Afk-Bot)
+
 *Funcional minecraft AFK bot for servers. Anti-AFK, Auto-Auth, Microsoft/Mojang accounts support.*
 ## Installation
 
