@@ -18,12 +18,12 @@
 
  1. [Download](https://github.com/Arny4/Afk-Bot/releases) latest package.
  2. Download & install [Node.JS](https://nodejs.org/dist/v14.15.4/node-v14.15.4-x64.msi)
- 3. Run `install_libs` file.
+ 3. Run `npm install` command in bot directory.
  
  ## Usage
  
  1. Configure bot in `settings.json` file. [Configuration Reference](https://github.com/Arny4/Afk-Bot/wiki/Configuring-bot-(settings.json))
- 2. Start bot with `run` file.
+ 2. Start bot with `node .` command.
 
 ## Features
 
