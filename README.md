@@ -1,7 +1,19 @@
 # Afk Bot
-![Issues](https://img.shields.io/github/issues/Arny4/Afk-Bot) ![Stars](https://img.shields.io/github/stars/Arny4/Afk-Bot) ![License](https://img.shields.io/github/license/Arny4/Afk-Bot)
+<p align="center"> 
+    <img src="https://img.shields.io/github/issues/urfate/afk-bot">
+    <img src="https://img.shields.io/github/forks/urfate/afk-bot">
+    <img src="https://img.shields.io/github/stars/urfate/afk-bot">
+    <img src="https://img.shields.io/github/license/urfate/afk-bot">
+</p>
 
-*Funcional minecraft AFK bot for servers. Anti-AFK, Auto-Auth, Microsoft/Mojang accounts support.*
+<p align="center">
+    Funcional minecraft AFK bot for servers
+</p>
+
+<p align="center">
+    Anti-AFK, Auto-Auth, Microsoft/Mojang accounts support.
+</p>
+
 ## Installation
 
  1. [Download](https://github.com/Arny4/Afk-Bot/releases) latest package.
@@ -15,12 +27,13 @@
 
 ## Features
 
- - Anti-AFK Kick mode
+ - Anti-AFK Kick Module
  - Move to target block after join
  - Mojang/Microsoft Account support
  - Chat log
+ - Chat messages Module
  - Auto reconnect
- - Supported server versions: `1.8 - 1.16.4`
+ - Supported server versions: `1.8 - 1.17.1`
  
  ### License
  [MIT](https://github.com/Arny4/Afk-Bot/blob/main/LICENSE)
