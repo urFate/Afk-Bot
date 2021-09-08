@@ -5,15 +5,6 @@ const { GoalBlock} = require('mineflayer-pathfinder').goals
 
 const config = require('./settings.json');
 
-console.log(" \n ")
-console.log("░█████╗░███████╗██╗░░██╗  ██████╗░░█████╗░████████╗  ██╗░░░██╗░░███╗░░░░░░█████╗░")
-console.log("██╔══██╗██╔════╝██║░██╔╝  ██╔══██╗██╔══██╗╚══██╔══╝  ██║░░░██║░████║░░░░░██╔══██╗")
-console.log("███████║█████╗░░█████═╝░  ██████╦╝██║░░██║░░░██║░░░  ╚██╗░██╔╝██╔██║░░░░░██║░░██║")
-console.log("██╔══██║██╔══╝░░██╔═██╗░  ██╔══██╗██║░░██║░░░██║░░░  ░╚████╔╝░╚═╝██║░░░░░██║░░██║")
-console.log("██║░░██║██║░░░░░██║░╚██╗  ██████╦╝╚█████╔╝░░░██║░░░  ░░╚██╔╝░░███████╗██╗╚█████╔╝")
-console.log("╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝  ╚═════╝░░╚════╝░░░░╚═╝░░░  ░░░╚═╝░░░╚══════╝╚═╝░╚════╝░")
-console.log(" \n ")
-
 function createBot () {
   const bot = mineflayer.createBot({
       username: config['bot-account']['username'],
@@ -32,12 +23,39 @@ function createBot () {
       console.log("\x1b[33m[BotLog] Bot joined to the server", '\x1b[0m')
 
       if(config.utils['auto-auth'].enabled){
+        console.log("[INFO] Started auto-auth module")
+
           var password = config.utils['auto-auth'].password
           setTimeout(function() {
               bot.chat(`/register ${password} ${password}`)
               bot.chat(`/login ${password}`)
           }, 500);
+
+          console.log(`[Auth] Authentification commands executed.`)
       }
+
+      if(config.utils['chat-messages'].enabled){
+        console.log("[INFO] Started chat-messages module")
+        var messages = config.utils['chat-messages']['messages']
+
+          if(config.utils['chat-messages'].repeat){
+            var delay = config.utils['chat-messages']['repeat-delay']
+            let i = 0
+
+            let msg_timer = setInterval(() => {
+                bot.chat(`${messages[i]}`)
+
+                if(i+1 == messages.length){
+                    i = 0
+                } else i++
+            }, delay * 1000)
+          } else {
+              messages.forEach(function(msg){
+                  bot.chat(msg)
+              })
+        }
+      }
+      
 
       const pos = config.position
 
@@ -57,7 +75,7 @@ function createBot () {
 
   bot.on("chat", function(username, message){
       if(config.utils['chat-log']){
-          console.log(`[ChatLog] ${username} : ${message}`)
+          console.log(`[ChatLog] <${username}> ${message}`)
       }
   })
 

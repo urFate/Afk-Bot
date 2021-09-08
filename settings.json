@@ -1,7 +1,7 @@
 {
     "bot-account":{ 
-        "username": "bot_one@example.com",
-        "password": "12345678",
+        "username": "popusk",
+        "password": "",
         "type": "mojang"
     },
 
@@ -27,6 +27,19 @@
         "anti-afk":{
             "enabled": false,
             "sneak": false
+        },
+
+        "chat-messages":{
+            "enabled": false,
+            "repeat": true,
+            "repeat-delay": 60,
+
+            "messages": [
+                "I'm a regular player ", 
+                "My owner is urFate_ ", 
+                "I want be alone ", 
+                "Visit my GitHub page! (urFate/Afk-Bot)"
+            ]
         },
 
         "chat-log": true,
