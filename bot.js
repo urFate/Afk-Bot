@@ -96,7 +96,9 @@ function createBot() {
 
    if (config.utils['auto-reconnect']) {
       bot.on('end', () => {
-         createBot();
+         setTimeout(() => {
+             createBot
+         }, config.utils['auto-recconect-delay']);
       });
    }
 
