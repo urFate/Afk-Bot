@@ -1,48 +1,49 @@
 {
-    "bot-account":{ 
-        "username": "bot",
-        "password": "",
-        "type": "mojang"
+  "bot-account": {
+    "username": "bot",
+    "password": "",
+    "type": "mojang"
+  },
+
+  "server": {
+    "ip": "localhost",
+    "port": 25565,
+    "version": "1.17.1"
+  },
+
+  "position": {
+    "enabled": false,
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+
+  "utils": {
+    "auto-auth": {
+      "enabled": false,
+      "password": "12345678"
     },
 
-    "server":{
-        "ip": "localhost",
-        "port": 25565,
-        "version": "1.17.1"
+    "anti-afk": {
+      "enabled": false,
+      "sneak": false
     },
 
-    "position":{
-        "enabled": false,
-        "x": 0,
-        "y": 0,
-        "z": 0
+    "chat-messages": {
+      "enabled": false,
+      "repeat": true,
+      "repeat-delay": 60,
+
+      "messages": [
+        "I'm a regular player ",
+        "My owner is urFate_ ",
+        "I want be alone ",
+        "Visit my GitHub page! (urFate/Afk-Bot)"
+      ]
     },
 
-    "utils":{
-        "auto-auth":{
-            "enabled": false,
-            "password": "12345678"
-        },
-
-        "anti-afk":{
-            "enabled": false,
-            "sneak": false
-        },
-
-        "chat-messages":{
-            "enabled": false,
-            "repeat": true,
-            "repeat-delay": 60,
-
-            "messages": [
-                "I'm a regular player ", 
-                "My owner is urFate_ ", 
-                "I want be alone ", 
-                "Visit my GitHub page! (urFate/Afk-Bot)"
-            ]
-        },
-
-        "chat-log": true,
-        "auto-reconnect": false
-    }
+    "chat-log": true,
+    "auto-reconnect": false,
+    "auto-recconect-delay": 5000
+  }
 }
