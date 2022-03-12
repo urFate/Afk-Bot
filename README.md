@@ -33,7 +33,7 @@
  - Chat log
  - Chat messages Module
  - Auto reconnect
- - Supported server versions: `1.8 - 1.18.1`
+ - Supported server versions: `1.8 - 1.18.2`
  
  ### License
  [MIT](https://github.com/Arny4/Afk-Bot/blob/main/LICENSE)
