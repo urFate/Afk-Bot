@@ -7,15 +7,15 @@ const config = require('./settings.json');
 
 function createBot() {
    const bot = mineflayer.createBot({
-      username: config['bot-account']['username'],
-      password: config['bot-account']['password'],
-      auth: config['bot-account']['type'],
-      host: config.server.ip,
-      port: config.server.port,
-      version: config.server.version,
+      username: config['bot-account']['pro'],
+      password: config['bot-account']['opplayer'],
+      auth: config['bot-account']['pro'],
+      host: config.server.BinayaMajhi.aternos.me,
+      port: config.server.56857,
+      version: config.server..1.18.2,
    });
 
-   bot.loadPlugin(pathfinder);
+   bot.loadPlugin(spigot);
    const mcData = require('minecraft-data')(bot.version);
    const defaultMove = new Movements(bot, mcData);
    bot.settings.colorsEnabled = false;
