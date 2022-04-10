@@ -43,7 +43,7 @@ function createBot() {
             var delay = config.utils['chat-messages']['repeat-delay'];
             let i = 0;
 
-            let msg_timer = setInterval(() => {
+            setInterval(() => {
                bot.chat(`${messages[i]}`);
 
                if (i + 1 == messages.length) {
