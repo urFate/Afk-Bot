@@ -1,13 +1,13 @@
 {
   "bot-account": {
-    "username": "bot",
+    "username": "rymusovbot",
     "password": "",
     "type": "mojang"
   },
 
   "server": {
-    "ip": "localhost",
-    "port": 25565,
+    "ip": "game2.falixserver.net",
+    "port": 53648,
     "version": "1.18.2"
   },
 
