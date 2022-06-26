@@ -8,7 +8,7 @@
   "server": {
     "ip": "localhost",
     "port": 25565,
-    "version": "1.17.1"
+    "version": "1.18.2"
   },
 
   "position": {
@@ -25,7 +25,7 @@
     },
 
     "anti-afk": {
-      "enabled": false,
+      "enabled": true,
       "sneak": false
     },
 
@@ -43,7 +43,7 @@
     },
 
     "chat-log": true,
-    "auto-reconnect": false,
-    "auto-reconnect-delay": 5000
+    "auto-reconnect": true,
+    "auto-reconnect-delay": 50
   }
 }
