@@ -5,10 +5,9 @@
     "type": "mojang"
   },
 
-  "server": {
-    "ip": "localhost",
-    "port": 25565,
-    "version": "1.17.1"
+    "ip": "HAIYANA_SMP.aternos.me",
+    "port": 52757,
+    "version": "1.19.2"
   },
 
   "position": {
