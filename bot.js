@@ -5,6 +5,9 @@ const { GoalBlock } = require('mineflayer-pathfinder').goals;
 
 const config = require('./settings.json');
 
+const loggers = require('./logging.js');
+const logger = loggers.logger;
+
 function createBot() {
    const bot = mineflayer.createBot({
       username: config['bot-account']['username'],
@@ -21,10 +24,10 @@ function createBot() {
    bot.settings.colorsEnabled = false;
 
    bot.once('spawn', () => {
-      console.log('\x1b[33m[BotLog] Bot joined to the server', '\x1b[0m');
+      logger.info("Bot joined to the server");
 
       if (config.utils['auto-auth'].enabled) {
-         console.log('[INFO] Started auto-auth module');
+         logger.info('Started auto-auth module');
 
          var password = config.utils['auto-auth'].password;
          setTimeout(() => {
@@ -32,11 +35,11 @@ function createBot() {
             bot.chat(`/login ${password}`);
          }, 500);
 
-         console.log(`[Auth] Authentication commands executed.`);
+         logger.info(`Authentication commands executed`);
       }
 
       if (config.utils['chat-messages'].enabled) {
-         console.log('[INFO] Started chat-messages module');
+         logger.info('Started chat-messages module');
          var messages = config.utils['chat-messages']['messages'];
 
          if (config.utils['chat-messages'].repeat) {
@@ -60,37 +63,39 @@ function createBot() {
       const pos = config.position;
 
       if (config.position.enabled) {
-         console.log(
-            `\x1b[32m[BotLog] Starting moving to target location (${pos.x}, ${pos.y}, ${pos.z})\x1b[0m`
+         logger.info(
+            `Starting moving to target location (${pos.x}, ${pos.y}, ${pos.z})`
          );
          bot.pathfinder.setMovements(defaultMove);
          bot.pathfinder.setGoal(new GoalBlock(pos.x, pos.y, pos.z));
       }
 
       if (config.utils['anti-afk'].enabled) {
-         bot.setControlState('jump', true);
          if (config.utils['anti-afk'].sneak) {
             bot.setControlState('sneak', true);
+         }
+
+         if(config.utils['anti-afk'].jump) {
+            bot.setControlState('jump', true);
          }
       }
    });
 
    bot.on('chat', (username, message) => {
       if (config.utils['chat-log']) {
-         console.log(`[ChatLog] <${username}> ${message}`);
+         logger.info(`<${username}> ${message}`);
       }
    });
 
    bot.on('goal_reached', () => {
-      console.log(
-         `\x1b[32m[BotLog] Bot arrived to target location. ${bot.entity.position}\x1b[0m`
+      logger.info(
+         `Bot arrived to target location. ${bot.entity.position}`
       );
    });
 
    bot.on('death', () => {
-      console.log(
-         `\x1b[33m[BotLog] Bot has been died and was respawned ${bot.entity.position}`,
-         '\x1b[0m'
+      logger.warn(
+         `Bot has been died and was respawned at ${bot.entity.position}`
       );
    });
 
@@ -102,15 +107,19 @@ function createBot() {
       });
    }
 
-   bot.on('kicked', (reason) =>
-      console.log(
-         '\x1b[33m',
-         `[BotLog] Bot was kicked from the server. Reason: \n${reason}`,
-         '\x1b[0m'
-      )
+   bot.on('kicked', (reason) => {
+      let reasonText = JSON.parse(reason).text;
+      if(reasonText === '') {
+         reasonText = JSON.parse(reason).extra[0].text
+      }
+      reasonText = reasonText.replace(/§./g, '');
+
+      logger.warn(`Bot was kicked from the server. Reason: ${reasonText}`)
+   }
    );
+
    bot.on('error', (err) =>
-      console.log(`\x1b[31m[ERROR] ${err.message}`, '\x1b[0m')
+      logger.error(`${err.message}`)
    );
 }
 
