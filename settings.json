@@ -6,9 +6,9 @@
   },
 
   "server": {
-    "ip": "localhost",
-    "port": 25565,
-    "version": "1.17.1"
+    "ip": "NstooS1.aternos.me",
+    "port": 62237,
+    "version": "1.19.3"
   },
 
   "position": {
