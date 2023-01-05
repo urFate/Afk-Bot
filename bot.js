@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer');
 const Movements = require('mineflayer-pathfinder').Movements;
 const pathfinder = require('mineflayer-pathfinder').pathfinder;
-const { GoalBlock } = require('mineflayer-pathfinder').goals;
+const { GoalBlock, GoalXZ } = require('mineflayer-pathfinder').goals;
 
 const config = require('./settings.json');
 
@@ -22,6 +22,7 @@ function createBot() {
    const mcData = require('minecraft-data')(bot.version);
    const defaultMove = new Movements(bot, mcData);
    bot.settings.colorsEnabled = false;
+   bot.pathfinder.setMovements(defaultMove);
 
    bot.once('spawn', () => {
       logger.info("Bot joined to the server");
@@ -29,7 +30,7 @@ function createBot() {
       if (config.utils['auto-auth'].enabled) {
          logger.info('Started auto-auth module');
 
-         var password = config.utils['auto-auth'].password;
+         let password = config.utils['auto-auth'].password;
          setTimeout(() => {
             bot.chat(`/register ${password} ${password}`);
             bot.chat(`/login ${password}`);
@@ -40,10 +41,11 @@ function createBot() {
 
       if (config.utils['chat-messages'].enabled) {
          logger.info('Started chat-messages module');
-         var messages = config.utils['chat-messages']['messages'];
+
+         let messages = config.utils['chat-messages']['messages'];
 
          if (config.utils['chat-messages'].repeat) {
-            var delay = config.utils['chat-messages']['repeat-delay'];
+            let delay = config.utils['chat-messages']['repeat-delay'];
             let i = 0;
 
             setInterval(() => {
@@ -64,9 +66,8 @@ function createBot() {
 
       if (config.position.enabled) {
          logger.info(
-            `Starting moving to target location (${pos.x}, ${pos.y}, ${pos.z})`
+             `Starting moving to target location (${pos.x}, ${pos.y}, ${pos.z})`
          );
-         bot.pathfinder.setMovements(defaultMove);
          bot.pathfinder.setGoal(new GoalBlock(pos.x, pos.y, pos.z));
       }
 
@@ -75,8 +76,25 @@ function createBot() {
             bot.setControlState('sneak', true);
          }
 
-         if(config.utils['anti-afk'].jump) {
+         if (config.utils['anti-afk'].jump) {
             bot.setControlState('jump', true);
+         }
+
+         if (config.utils['anti-afk'].hit) {
+            setInterval(() => {
+               bot.swingArm("right", true);
+            }, 500);
+         }
+
+         if (config.utils['anti-afk'].rotate) {
+            setInterval(() => {
+               bot.look(bot.entity.yaw + 1, bot.entity.pitch, true);
+            }, 100);
+         }
+
+         if (config.utils['anti-afk']['circle-walk'].enabled) {
+            let radius = config.utils['anti-afk']['circle-walk'].radius;
+            circleWalk(bot, radius);
          }
       }
    });
@@ -88,9 +106,11 @@ function createBot() {
    });
 
    bot.on('goal_reached', () => {
-      logger.info(
-         `Bot arrived to target location. ${bot.entity.position}`
-      );
+      if(config.position.enabled) {
+         logger.info(
+             `Bot arrived to target location. ${bot.entity.position}`
+         );
+      }
    });
 
    bot.on('death', () => {
@@ -121,6 +141,30 @@ function createBot() {
    bot.on('error', (err) =>
       logger.error(`${err.message}`)
    );
+}
+
+function circleWalk(bot, radius) {
+   // Make bot walk in square with center in bot's  wthout stopping
+    return new Promise(() => {
+        const pos = bot.entity.position;
+        const x = pos.x;
+        const y = pos.y;
+        const z = pos.z;
+
+        const points = [
+            [x + radius, y, z],
+            [x, y, z + radius],
+            [x - radius, y, z],
+            [x, y, z - radius],
+        ];
+
+        let i = 0;
+        setInterval(() => {
+             if(i === points.length) i = 0;
+             bot.pathfinder.setGoal(new GoalXZ(points[i][0], points[i][2]));
+             i++;
+        }, 1000);
+    });
 }
 
 createBot();
