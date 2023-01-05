@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-    Anti-AFK, Auto-Auth, Microsoft/Mojang accounts support.
+    Anti-AFK, Auto-Auth, Microsoft/Offline accounts support.
 </p>
 
 ## Installation
@@ -33,7 +33,7 @@
  - Chat log
  - Chat messages Module
  - Auto reconnect
- - Supported server versions: `1.8 - 1.18.2`
+ - Supported server versions: `1.8 - 1.19.3`
  
  ### License
  [MIT](https://github.com/urFate/Afk-Bot/blob/main/LICENSE)
