@@ -32,7 +32,7 @@ function createBot() {
             bot.chat(`/login ${password}`);
          }, 500);
 
-         console.log(`[Auth] Authentification commands executed.`);
+         console.log(`[Auth] Authentication commands executed.`);
       }
 
       if (config.utils['chat-messages'].enabled) {
@@ -46,7 +46,7 @@ function createBot() {
             setInterval(() => {
                bot.chat(`${messages[i]}`);
 
-               if (i + 1 == messages.length) {
+               if (i + 1 === messages.length) {
                   i = 0;
                } else i++;
             }, delay * 1000);
