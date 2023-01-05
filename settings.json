@@ -1,14 +1,14 @@
 {
   "bot-account": {
     "username": "bot",
-    "password": "",
-    "type": "mojang"
+    "password": "your_password",
+    "type": "microsoft"
   },
 
   "server": {
     "ip": "localhost",
     "port": 25565,
-    "version": "1.17.1"
+    "version": "1.19.3"
   },
 
   "position": {
@@ -26,7 +26,15 @@
 
     "anti-afk": {
       "enabled": false,
-      "sneak": false
+      "sneak": false,
+      "jump": false,
+      "hit": true,
+      "rotate": false,
+
+      "circle-walk": {
+        "enabled": false,
+        "radius": 2
+      }
     },
 
     "chat-messages": {
