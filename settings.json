@@ -6,9 +6,9 @@
   },
 
   "server": {
-    "ip": "localhost",
-    "port": 25565,
-    "version": "1.19.3"
+    "ip": "DarklandsServer.aternos.me",
+    "port": 63921,
+    "version": "1.16.6"
   },
 
   "position": {
@@ -20,25 +20,25 @@
 
   "utils": {
     "auto-auth": {
-      "enabled": false,
+      "enabled": true,
       "password": "12345678"
     },
 
     "anti-afk": {
-      "enabled": false,
-      "sneak": false,
-      "jump": false,
+      "enabled": true,
+      "sneak": true,
+      "jump": true,
       "hit": true,
-      "rotate": false,
+      "rotate": true,
 
       "circle-walk": {
-        "enabled": false,
+        "enabled": true,
         "radius": 2
       }
     },
 
     "chat-messages": {
-      "enabled": false,
+      "enabled": true,
       "repeat": true,
       "repeat-delay": 60,
 
