@@ -23,5 +23,8 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+**Bot config**
+In many issues it's very important option. Errors without config provided will be closed immediately.
+
 **Additional context**
 Add any other context about the problem here.
