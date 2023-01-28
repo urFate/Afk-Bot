@@ -1,14 +1,14 @@
 {
   "bot-account": {
     "username": "bot",
-    "password": "your_password",
+    "password": "amongus1005#",
     "type": "microsoft"
   },
 
   "server": {
-    "ip": "localhost",
-    "port": 25565,
-    "version": "1.19.3"
+    "ip": "a1rworldbedrock.aternos.me",
+    "port": 36558,
+    "version": "1.19.51.01"
   },
 
   "position": {
@@ -51,7 +51,7 @@
     },
 
     "chat-log": true,
-    "auto-reconnect": false,
-    "auto-reconnect-delay": 5000
+    "auto-reconnect": true,
+    "auto-reconnect-delay": 1
   }
 }
