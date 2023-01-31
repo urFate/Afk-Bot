@@ -86,8 +86,10 @@ function createBot() {
 
             setInterval(() => {
                if(attackMobs) {
-                     let entity = bot.nearestEntity();
-                     if(entity && (entity.type !== 'player')) {
+                     let entity = bot.nearestEntity(e => e.type !== 'object' && e.type !== 'player'
+                         && e.type !== 'global' && e.type !== 'orb' && e.type !== 'other');
+
+                     if(entity) {
                         bot.attack(entity);
                         return
                      }
