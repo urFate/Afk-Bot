@@ -80,10 +80,23 @@ function createBot() {
             bot.setControlState('jump', true);
          }
 
-         if (config.utils['anti-afk'].hit) {
+         if (config.utils['anti-afk']['hit'].enabled) {
+            let delay = config.utils['anti-afk']['hit']['delay'];
+            let attackMobs = config.utils['anti-afk']['hit']['attack-mobs']
+
             setInterval(() => {
+               if(attackMobs) {
+                     let entity = bot.nearestEntity(e => e.type !== 'object' && e.type !== 'player'
+                         && e.type !== 'global' && e.type !== 'orb' && e.type !== 'other');
+
+                     if(entity) {
+                        bot.attack(entity);
+                        return
+                     }
+               }
+
                bot.swingArm("right", true);
-            }, 500);
+            }, delay);
          }
 
          if (config.utils['anti-afk'].rotate) {
@@ -93,7 +106,7 @@ function createBot() {
          }
 
          if (config.utils['anti-afk']['circle-walk'].enabled) {
-            let radius = config.utils['anti-afk']['circle-walk'].radius;
+            let radius = config.utils['anti-afk']['circle-walk']['radius']
             circleWalk(bot, radius);
          }
       }
