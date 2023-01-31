@@ -80,10 +80,22 @@ function createBot() {
             bot.setControlState('jump', true);
          }
 
-         if (config.utils['anti-afk'].hit) {
+         if (config.utils['anti-afk']['hit'].enabled) {
+            let delay = config.utils['anti-afk']['hit']['hit-delay'];
+
+            if(config.utils['anti-afk']['hit']['attack-mobs']) {
+                setInterval(() => {
+                    let entity = bot.nearestEntity();
+                    if(entity) {
+                        bot.attack(entity);
+                    }
+                }, delay);
+                return
+            }
+
             setInterval(() => {
                bot.swingArm("right", true);
-            }, 500);
+            }, delay);
          }
 
          if (config.utils['anti-afk'].rotate) {

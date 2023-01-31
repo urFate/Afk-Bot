@@ -28,8 +28,13 @@
       "enabled": false,
       "sneak": false,
       "jump": false,
-      "hit": true,
       "rotate": false,
+
+      "hit": {
+        "enabled": false,
+        "delay": 1000,
+        "attack-mobs": false
+      },
 
       "circle-walk": {
         "enabled": false,
