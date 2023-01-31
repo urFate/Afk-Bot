@@ -82,18 +82,17 @@ function createBot() {
 
          if (config.utils['anti-afk']['hit'].enabled) {
             let delay = config.utils['anti-afk']['hit']['hit-delay'];
-
-            if(config.utils['anti-afk']['hit']['attack-mobs']) {
-                setInterval(() => {
-                    let entity = bot.nearestEntity();
-                    if(entity) {
-                        bot.attack(entity);
-                    }
-                }, delay);
-                return
-            }
+            let attackMobs = config.utils['anti-afk']['hit']['attack-mobs']
 
             setInterval(() => {
+               if(attackMobs) {
+                     let entity = bot.nearestEntity();
+                     if(entity) {
+                        bot.attack(entity);
+                        return
+                     }
+               }
+
                bot.swingArm("right", true);
             }, delay);
          }
@@ -105,7 +104,7 @@ function createBot() {
          }
 
          if (config.utils['anti-afk']['circle-walk'].enabled) {
-            let radius = config.utils['anti-afk']['circle-walk'].radius;
+            let radius = config.utils['anti-afk']['circle-walk']['radius']
             circleWalk(bot, radius);
          }
       }
