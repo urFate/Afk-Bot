@@ -1,14 +1,14 @@
 {
   "bot-account": {
-    "username": "bot",
-    "password": "your_password",
+    "username": "MBaternos",
+    "password": "seawall-privicy",
     "type": "microsoft"
   },
 
   "server": {
-    "ip": "localhost",
-    "port": 25565,
-    "version": "1.19.3"
+    "ip": "thomasvz.aternos.me",
+    "port": 11667,
+    "version": "1.20.1"
   },
 
   "position": {
@@ -31,9 +31,9 @@
       "rotate": false,
 
       "hit": {
-        "enabled": false,
+        "enabled": true,
         "delay": 1000,
-        "attack-mobs": false
+        "attack-mobs": true 
       },
 
       "circle-walk": {
@@ -43,15 +43,14 @@
     },
 
     "chat-messages": {
-      "enabled": false,
+      "enabled": true,
       "repeat": true,
       "repeat-delay": 60,
 
       "messages": [
-        "I'm a regular player ",
-        "My owner is urFate_ ",
-        "I want be alone ",
-        "Visit my GitHub page! (urFate/Afk-Bot)"
+        "I'm a minebot welcome player ",
+        "My owner is thomas ",
+        "I want be alone " 
       ]
     },
 
